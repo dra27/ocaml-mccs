@@ -31,6 +31,14 @@
 
 using namespace std;
 
+#ifdef _WIN32
+#define PRINT_ERR(...) do {fprintf(stderr, __VA_ARGS__); fflush(stderr);} while (0)
+#define PRINT_OUT(...) do {fprintf(stdout, __VA_ARGS__); fflush(stdout);} while (0)
+#else
+#define PRINT_ERR(...) fprintf(stderr, __VA_ARGS__)
+#define PRINT_OUT(...) fprintf(stdout, __VA_ARGS__)
+#endif
+
 // class predeclarations
 class CUDFPropertyValue;
 class CUDFPackage;

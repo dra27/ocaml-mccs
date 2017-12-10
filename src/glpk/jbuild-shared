@@ -1,0 +1,14 @@
+(jbuild_version 1)
+
+(library
+ ((name            mccs_hostglpk_shared)
+  (public_name     mccs.glpk.shared)
+  (modules         (ocaml_mccs_glpk))
+  (library_flags   (:standard -ccopt -L/cygdrive/c/Users/DRA/Documents/solver/local/mingw64/lib))
+  (c_library_flags (:standard (:include clibs.sexp)))
+  (wrapped         false)))
+
+(rule
+ ((targets (flags.sexp))
+  (deps (context_flags.ml))
+  (action (with-stdout-to ${@} (run ocaml ${^} clibs)))))
